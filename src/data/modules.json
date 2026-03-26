@@ -1,8 +1,8 @@
 [
   { "key": "wordpress_access", "title": "Acceso a WordPress", "isOptional": false },
-  { "key": "elementor", "title": "Edición con Elementor", "isOptional": false },
+  { "key": "elementor", "title": "Edición con Elementor", "isOptional": true },
   { "key": "woocommerce_products", "title": "Gestión de Productos", "isOptional": true },
   { "key": "woocommerce_orders", "title": "Gestión de Pedidos", "isOptional": true },
   { "key": "stripe", "title": "Configuración Stripe", "isOptional": true },
-  { "key": "woodmart_theme", "title": "Manual Tema Woodmart", "isOptional": true }
+  { "key": "suppre_theme", "title": "Manual Tema Suppre", "isOptional": true }
 ]

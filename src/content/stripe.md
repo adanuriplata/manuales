@@ -10,3 +10,8 @@ Pasos para configurarla en WooCommerce:
 4. Activa el método de pago y guarda cambios.
 
 ⚠️ Asegúrate de probar primero en **modo sandbox** antes de activarlo en producción.
+
+Recursos útiles:
+
+- [Documentación oficial](https://stripe.com/es/guides)  
+- [Plugin Woocommerce stripe](https://woocommerce.com/document/stripe-espanol/#section-12)  

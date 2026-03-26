@@ -1,9 +1,5 @@
-# Acceso a WordPress
+# Para los ajustes con elementor.
 
-Para acceder al panel de administración de WordPress:
+Su sitio web usa el maquetador Elementor:
 
-1. Dirígete a la URL: **tusitio.com/wp-admin**  
-2. Ingresa tu usuario y contraseña proporcionados.  
-3. Serás llevado al escritorio principal de WordPress, donde podrás administrar tu sitio.
-
-💡 *Tip: Guarda la URL en tus favoritos para un acceso más rápido.*
+Puede encontrar todo lo referente al maquetador en el siguiente enlace: **[tusitio.com/wp-admin](https://elementor.com/academy/get-started/)**  

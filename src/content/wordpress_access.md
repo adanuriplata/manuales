@@ -1,4 +1,5 @@
 # Inicio de Sesión en WordPress
+---
 
 ## Guía para Acceder al Panel de Administración de su Sitio Web
 
@@ -11,18 +12,18 @@ Este manual le guiará paso a paso en el proceso de iniciar sesión en el panel 
 1. Abra su navegador web (Chrome, Firefox, Safari, etc.)
 2. En la barra de direcciones, escriba la URL de acceso:
    ```
-   https://sudominio.com/wp-admin
+   https://chingonera.com/wp-admin
    ```
    o
    ```
-   https://sudominio.com/wp-login.php
+   https://chingonera.com/wp-login.php
    ```
    *(Reemplace "sudominio.com" con la dirección real de su sitio web)*
 
-[Ejemplo de URL de acceso](https://ejemplo.com/wp-admin)
+
 
 💡 *Tip: Guarda la URL en tus favoritos para un acceso más rápido.*
-
+<div class="page-break"></div>
 ---
 
 ### 👤 Paso 2: Introducir sus Credenciales
@@ -34,9 +35,10 @@ En la página de login, complete los siguientes campos:
 - **Contraseña**: 
   *(La contraseña temporal o permanente que recibió)*
 
-[Formulario de login de WordPress](https://ejemplo.com/formulario-login)
+<!--[Formulario de login de WordPress](https://ejemplo.com/formulario-login)-->
 
-[Una descripción de mi imagen](/images/wordpress_access_login.png)
+<!-- ![Una descripción de mi imagen](/images/wordpress_access_login.png) -->
+<img src="/images/wordpress_access_login.png"  width="400" alt="Una descripción de mi imagen">
 
 ---
 
@@ -49,7 +51,7 @@ Si es la primera vez que accede:
    - Cree una contraseña segura (mínimo 12 caracteres, con mayúsculas, números y símbolos)
 
 2. **Active la verificación en dos pasos** (si está disponible) para mayor seguridad.
-
+<div class="page-break"></div>
 ---
 
 ### 🧭 Paso 4: Navegación en el Panel de Administración
@@ -66,6 +68,8 @@ Una vez dentro, verá el Escritorio de WordPress con un menú lateral que incluy
 - **Herramientas**: Utilidades varias
 - **Ajustes**: Configuración general del sitio
 
+<img src="/images/wordpress_access_dashboard.png" width="600" alt="Una descripción de mi imagen">
+<div class="page-break"></div>
 ---
 
 ### ❌ Solución de Problemas Comunes
@@ -81,29 +85,3 @@ Una vez dentro, verá el Escritorio de WordPress con un menú lateral que incluy
 - Espere 15-20 minutos o contacte con su desarrollador para desbloquear el acceso
 
 ---
-
-### 📞 Soporte Técnico
-Si experimenta problemas para acceder, contacte con:
-
-**Nombre del responsable**: [Nombre del contactoTécnico]  
-**Email**: [email@dominio.com]  
-**Teléfono**: [Número de teléfono]  
-
-Proporcione los siguientes detalles al contactar:
-- URL de su sitio web
-- Nombre de usuario que está utilizando
-- Descripción detallada del error
-
----
-
-### 🔄 Accesos Directos Útiles
-- **Página de login**: sudominio.com/wp-admin
-- **Página principal**: sudominio.com
-- **Política de privacidad**: sudominio.com/politica-privacidad
-
-*Nota: Guarde este manual en un lugar seguro y no comparta sus credenciales con personas no autorizadas.*
-
----
-
-*Última actualización: [fecha]*  
-*Documento creado para: [Nombre del cliente]*
