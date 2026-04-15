@@ -6,7 +6,32 @@ import ReactDOMServer from "react-dom/server";
 import PdfTemplate from "./PdfTemplate";
 import { pdfStyles } from "../styles/pdf-styles";
 
-export default function PreviewManual({ selected, clientName, clientDomain }: { selected: string[]; clientName: string; clientDomain: string }) {
+// Reemplaza las URLs de imágenes en el HTML con los base64 provistos.
+// Compara por el nombre del archivo para evitar problemas con URLs absolutas vs relativas.
+function applyImageReplacements(html: string, replacements: Record<string, string>): string {
+  let result = html;
+  for (const [src, base64] of Object.entries(replacements)) {
+    // Extraer solo el nombre del archivo (ej: "wordpress_access_dashboard.png")
+    const filename = src.split("/").pop();
+    if (!filename) continue;
+    // Reemplazar cualquier src que termine con ese nombre de archivo
+    const escaped = filename.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    result = result.replace(new RegExp(`src="[^"]*${escaped}"`, "g"), `src="${base64}"`);
+  }
+  return result;
+}
+
+export default function PreviewManual({
+  selected,
+  clientName,
+  clientDomain,
+  imageReplacements,
+}: {
+  selected: string[];
+  clientName: string;
+  clientDomain: string;
+  imageReplacements: Record<string, string>;
+}) {
   const [content, setContent] = useState<Record<string, string>>({});
   const [isExporting, setIsExporting] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
@@ -28,10 +53,17 @@ export default function PreviewManual({ selected, clientName, clientDomain }: { 
     (m) => selected.includes(m.key) || !m.isOptional
   );
 
+  // Contenido con imágenes reemplazadas aplicadas
+  const contentWithReplacements: Record<string, string> = Object.fromEntries(
+    Object.entries(content).map(([key, html]) => [
+      key,
+      applyImageReplacements(html, imageReplacements),
+    ])
+  );
+
   const handleExportPDF = async () => {
     setIsExporting(true);
 
-    // Generar el base64 del logo primero
     const getBase64Image = async (src: string) => {
       const response = await fetch(src);
       const blob = await response.blob();
@@ -43,14 +75,13 @@ export default function PreviewManual({ selected, clientName, clientDomain }: { 
       });
     };
 
-    const logoBase64 = await getBase64Image("/logoPortada.png"); // Ajusta la ruta
-    const logoHeaderBase64 = await getBase64Image("/logoEncabezado.png"); // Ajusta la ruta
-    console.log('logoHeaderBase64', logoHeaderBase64)
+    const logoBase64 = await getBase64Image("/logoPortada.png");
+    const logoHeaderBase64 = await getBase64Image("/logoEncabezado.png");
 
     const bodyHtml = ReactDOMServer.renderToString(
       <PdfTemplate
         selectedModules={selectedModules}
-        content={content}
+        content={contentWithReplacements}
         clientName={clientName}
         logoBase64={logoBase64}
       />
@@ -94,7 +125,7 @@ export default function PreviewManual({ selected, clientName, clientDomain }: { 
           <style>{pdfStyles}</style>
           <PdfTemplate
             selectedModules={selectedModules}
-            content={content}
+            content={contentWithReplacements}
             clientName={clientName}
             logoBase64={""}
           />
@@ -111,7 +142,7 @@ export default function PreviewManual({ selected, clientName, clientDomain }: { 
             <div
               className="prose max-w-none mt-2"
               dangerouslySetInnerHTML={{
-                __html: content[m.key] || "<p>Cargando...</p>",
+                __html: contentWithReplacements[m.key] || "<p>Cargando...</p>",
               }}
             />
           </div>
