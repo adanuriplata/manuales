@@ -2,15 +2,17 @@
 
 import { useState } from "react";
 import modules from "@/data/modules.json";
+import ImageReplacer from "./ImageReplacer";
 
 export default function ModuleSelector({
   onSelect,
 }: {
-  onSelect: (keys: string[], clientName: string, clientDomain: string) => void;
+  onSelect: (keys: string[], clientName: string, clientDomain: string, imageReplacements: Record<string, string>) => void;
 }) {
   const [selected, setSelected] = useState<string[]>([]);
   const [clientName, setClientName] = useState("");
   const [clientDomain, setClientDomain] = useState("");
+  const [imageReplacements, setImageReplacements] = useState<Record<string, string>>({});
 
   const toggleModule = (key: string) => {
     setSelected((prev) =>
@@ -53,8 +55,13 @@ export default function ModuleSelector({
           </li>
         ))}
       </ul>
+      <ImageReplacer
+        activeModules={selected}
+        replacements={imageReplacements}
+        onChange={setImageReplacements}
+      />
       <button
-        onClick={() => onSelect(selected, clientName, clientDomain)}
+        onClick={() => onSelect(selected, clientName, clientDomain, imageReplacements)}
         className="px-4 py-2 bg-blue-600 text-white rounded-md"
       >
         Generar Manual

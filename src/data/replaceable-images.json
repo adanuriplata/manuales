@@ -1,0 +1,32 @@
+[
+  {
+    "key": "wordpress_access_dashboard",
+    "src": "/images/wordpress_access_dashboard.png",
+    "label": "Panel de administración WordPress",
+    "module": "wordpress_access"
+  },
+  {
+    "key": "wordpress_access_login",
+    "src": "/images/wordpress_access_login.png",
+    "label": "Formulario de login WordPress",
+    "module": "wordpress_access"
+  },
+  {
+    "key": "woocommerce_orders",
+    "src": "/images/woocommerce-orders.png",
+    "label": "Lista de pedidos WooCommerce",
+    "module": "woocommerce_orders"
+  },
+  {
+    "key": "woocommerce_orders_details",
+    "src": "/images/woocommerce-orders-details.png",
+    "label": "Detalle de pedido WooCommerce",
+    "module": "woocommerce_orders"
+  },
+  {
+    "key": "woocommerce_products",
+    "src": "/images/woocommerce-products.png",
+    "label": "Lista de productos WooCommerce",
+    "module": "woocommerce_products"
+  }
+]
