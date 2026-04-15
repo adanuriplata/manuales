@@ -6,7 +6,7 @@ import ReactDOMServer from "react-dom/server";
 import PdfTemplate from "./PdfTemplate";
 import { pdfStyles } from "../styles/pdf-styles";
 
-export default function PreviewManual({ selected }: { selected: string[] }) {
+export default function PreviewManual({ selected, clientName, clientDomain }: { selected: string[]; clientName: string; clientDomain: string }) {
   const [content, setContent] = useState<Record<string, string>>({});
   const [isExporting, setIsExporting] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
@@ -16,13 +16,13 @@ export default function PreviewManual({ selected }: { selected: string[] }) {
       const res = await fetch("/api/content", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ keys: selected }),
+        body: JSON.stringify({ keys: selected, clientDomain }),
       });
       const data = await res.json();
       setContent(data);
     }
     loadContent();
-  }, [selected]);
+  }, [selected, clientDomain]);
 
   const selectedModules = modules.filter(
     (m) => selected.includes(m.key) || !m.isOptional
@@ -51,7 +51,7 @@ export default function PreviewManual({ selected }: { selected: string[] }) {
       <PdfTemplate
         selectedModules={selectedModules}
         content={content}
-        clientName="https://chingonera.com.mx"
+        clientName={clientName}
         logoBase64={logoBase64}
       />
     );
@@ -68,7 +68,7 @@ export default function PreviewManual({ selected }: { selected: string[] }) {
     const res = await fetch("/api/export-pdf", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ html, logoBase64: logoHeaderBase64, clientName: "https://chingonera.com.mx" }),
+      body: JSON.stringify({ html, logoBase64: logoHeaderBase64, clientName }),
     });
     setIsExporting(false);
 
@@ -95,7 +95,7 @@ export default function PreviewManual({ selected }: { selected: string[] }) {
           <PdfTemplate
             selectedModules={selectedModules}
             content={content}
-            clientName="https://chingonera.com"
+            clientName={clientName}
             logoBase64={""}
           />
         </div>
